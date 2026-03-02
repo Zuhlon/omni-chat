@@ -12,17 +12,11 @@ function togglePlay(button) {
     const isPlaying = button.dataset.playing === 'true';
     
     if (isPlaying) {
-        button.textContent = '▶️';
+        button.textContent = '▶';
         button.dataset.playing = 'false';
-        // Stop animation
-        const bars = button.parentElement.querySelectorAll('.waveform-bars span');
-        bars.forEach(bar => bar.style.animationPlayState = 'paused');
     } else {
-        button.textContent = '⏸️';
+        button.textContent = '⏸';
         button.dataset.playing = 'true';
-        // Start animation
-        const bars = button.parentElement.querySelectorAll('.waveform-bars span');
-        bars.forEach(bar => bar.style.animationPlayState = 'running');
         
         // Simulate playback end after duration
         setTimeout(() => {
@@ -33,42 +27,64 @@ function togglePlay(button) {
     }
 }
 
-// Show transcription (full text or summary)
-function showTranscription(type, button) {
+// Show transcription with 3-second loader
+function showTranscription(id) {
+    const player = document.getElementById(`player-${id}`);
+    const loader = document.getElementById(`loader-${id}`);
+    const transcription = document.getElementById(`transcription-${id}`);
+    const transcribeBtn = player.querySelector('.transcribe-btn');
+    
+    // Hide player content (but keep structure)
+    player.style.opacity = '0.5';
+    player.style.pointerEvents = 'none';
+    
+    // Disable transcribe button
+    transcribeBtn.disabled = true;
+    transcribeBtn.style.cursor = 'default';
+    
+    // Show loader
+    loader.classList.remove('hidden');
+    
+    // After 3 seconds, hide loader and show transcription
+    setTimeout(() => {
+        // Restore player
+        player.style.opacity = '1';
+        player.style.pointerEvents = 'auto';
+        
+        // Hide loader
+        loader.classList.add('hidden');
+        
+        // Show transcription panel
+        transcription.classList.remove('hidden');
+        
+        // Ensure summary tab is active by default
+        switchTab('summary', id, transcription.querySelector('.toggle-btn:last-child'));
+        
+        // Change transcribe button to "opened" state
+        transcribeBtn.innerHTML = '<span class="transcribe-icon">📄</span>';
+        transcribeBtn.onclick = null; // Remove click handler
+        transcribeBtn.style.cursor = 'default';
+    }, 3000);
+}
+
+// Switch between tabs (full text / summary)
+function switchTab(type, id, button) {
     const panel = button.closest('.transcription-panel');
     const buttons = panel.querySelectorAll('.toggle-btn');
+    const fullContent = document.getElementById(`full-${id}`);
+    const summaryContent = document.getElementById(`summary-${id}`);
     
     // Update active button
     buttons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
     
-    // Find the correct transcription content
-    let fullId = 'transcription-full';
-    let summaryId = 'transcription-summary';
-    
-    // Check if we're on screen 2
-    if (panel.closest('.outgoing')) {
-        fullId = 'transcription-full-2';
-        summaryId = 'transcription-summary-2';
-    }
-    
-    const fullContent = document.getElementById(fullId);
-    const summaryContent = document.getElementById(summaryId);
-    
+    // Show/hide content
     if (type === 'full') {
-        if (fullContent) {
-            fullContent.classList.remove('hidden');
-        }
-        if (summaryContent) {
-            summaryContent.classList.add('hidden');
-        }
+        fullContent.classList.remove('hidden');
+        summaryContent.classList.add('hidden');
     } else {
-        if (fullContent) {
-            fullContent.classList.add('hidden');
-        }
-        if (summaryContent) {
-            summaryContent.classList.remove('hidden');
-        }
+        fullContent.classList.add('hidden');
+        summaryContent.classList.remove('hidden');
     }
 }
 
@@ -80,13 +96,13 @@ function toggleCallHistory() {
 
 // Confirm booking
 function confirmBooking() {
-    showToast('✅ Запись подтверждена! Ждём вас завтра в 15:00');
+    showToast('✓ Запись подтверждена! Ждём вас завтра в 15:00');
     
     // Add visual feedback
     const btn = document.querySelector('.confirm-btn');
     if (btn) {
         btn.textContent = '✓ Подтверждено';
-        btn.style.background = 'linear-gradient(135deg, #8cc152 0%, #7ab042 100%)';
+        btn.style.background = 'rgba(100, 140, 100, 0.5)';
         btn.disabled = true;
     }
 }
@@ -112,14 +128,15 @@ function simulateCall(type) {
         setTimeout(() => {
             const status = modal.querySelector('.call-status');
             if (status) {
-                status.textContent = 'Соединение установлено • 00:00';
+                status.textContent = 'Соединение • 00:00';
                 let seconds = 0;
-                setInterval(() => {
+                const interval = setInterval(() => {
                     seconds++;
                     const mins = Math.floor(seconds / 60);
                     const secs = seconds % 60;
-                    status.textContent = `Соединение установлено • ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                    status.textContent = `Соединение • ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
                 }, 1000);
+                modal.dataset.callInterval = interval;
             }
         }, 2000);
     }
@@ -129,6 +146,10 @@ function simulateCall(type) {
 function endCall(button) {
     const modal = button.closest('.call-modal');
     if (modal) {
+        // Clear interval if exists
+        if (modal.dataset.callInterval) {
+            clearInterval(parseInt(modal.dataset.callInterval));
+        }
         modal.classList.remove('active');
         setTimeout(() => modal.remove(), 300);
     }
@@ -162,15 +183,12 @@ function showToast(message) {
 function startVoiceRecord() {
     const voiceBtn = document.querySelector('.voice-btn');
     if (voiceBtn) {
-        voiceBtn.style.background = '#e74c3c';
-        voiceBtn.style.color = 'white';
-        voiceBtn.style.borderRadius = '50%';
+        voiceBtn.style.color = 'rgba(200, 100, 100, 0.8)';
         
         showToast('🔴 Запись голосового сообщения...');
         
         // Simulate recording for 3 seconds
         setTimeout(() => {
-            voiceBtn.style.background = '';
             voiceBtn.style.color = '';
             showToast('✓ Голосовое сообщение записано');
         }, 3000);
@@ -189,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageInput = document.querySelector('.message-input');
     if (messageInput) {
         messageInput.addEventListener('focus', () => {
-            messageInput.style.boxShadow = '0 0 0 2px rgba(102, 126, 234, 0.3)';
+            messageInput.style.boxShadow = '0 0 0 1px rgba(150, 180, 150, 0.3)';
         });
         
         messageInput.addEventListener('blur', () => {
@@ -238,23 +256,5 @@ function addMessage(text, type = 'outgoing') {
     }, 10);
 }
 
-// Interactive waveform animation on hover
-document.querySelectorAll('.waveform-bars').forEach(waveform => {
-    waveform.addEventListener('mouseenter', () => {
-        waveform.querySelectorAll('span').forEach(bar => {
-            bar.style.animationPlayState = 'running';
-        });
-    });
-    
-    waveform.addEventListener('mouseleave', () => {
-        const playBtn = waveform.closest('.voice-header').querySelector('.play-btn');
-        if (playBtn && playBtn.dataset.playing !== 'true') {
-            waveform.querySelectorAll('span').forEach(bar => {
-                bar.style.animationPlayState = 'paused';
-            });
-        }
-    });
-});
-
-console.log('🎵 Омниканальный мессенджер загружен!');
+console.log('🎧 Омниканальный мессенджер загружен!');
 console.log('📱 Интерактивный прототип готов к использованию');

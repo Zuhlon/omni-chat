@@ -237,106 +237,165 @@ body {
     margin-left: 4px;
 }
 
-/* Voice Message - Muted Style */
+/* Voice Message - Telegram Style Player */
 .voice-message .message-content {
-    min-width: 240px;
-    padding: 10px 12px;
+    min-width: 220px;
+    padding: 8px 10px;
 }
 
-.voice-header {
+.voice-player {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 8px;
 }
 
 .play-btn {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
     border-radius: 50%;
-    background: #4a4a4a;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
     transition: background 0.2s;
 }
 
 .play-btn:hover {
-    background: #5a5a5a;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .voice-waveform {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    gap: 6px;
 }
 
 .waveform-bars {
     display: flex;
     align-items: center;
     gap: 2px;
-    height: 22px;
+    height: 20px;
+    flex: 1;
 }
 
 .waveform-bars span {
     width: 3px;
-    background: #6a6a6a;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 2px;
-    animation: wave 1s ease-in-out infinite;
 }
 
 .message.outgoing .waveform-bars span {
-    background: #7a9a7a;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.waveform-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
-.waveform-bars span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
-.waveform-bars span:nth-child(3) { height: 18px; animation-delay: 0.2s; }
-.waveform-bars span:nth-child(4) { height: 14px; animation-delay: 0.3s; }
-.waveform-bars span:nth-child(5) { height: 20px; animation-delay: 0.4s; }
-.waveform-bars span:nth-child(6) { height: 10px; animation-delay: 0.5s; }
-.waveform-bars span:nth-child(7) { height: 22px; animation-delay: 0.6s; }
-.waveform-bars span:nth-child(8) { height: 16px; animation-delay: 0.7s; }
-.waveform-bars span:nth-child(9) { height: 12px; animation-delay: 0.8s; }
-.waveform-bars span:nth-child(10) { height: 18px; animation-delay: 0.9s; }
-.waveform-bars span:nth-child(11) { height: 8px; animation-delay: 1s; }
-.waveform-bars span:nth-child(12) { height: 14px; animation-delay: 1.1s; }
-.waveform-bars span:nth-child(13) { height: 20px; animation-delay: 1.2s; }
-.waveform-bars span:nth-child(14) { height: 10px; animation-delay: 1.3s; }
-.waveform-bars span:nth-child(15) { height: 6px; animation-delay: 1.4s; }
-
-@keyframes wave {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(1.2); }
-}
+.waveform-bars span:nth-child(1) { height: 5px; }
+.waveform-bars span:nth-child(2) { height: 10px; }
+.waveform-bars span:nth-child(3) { height: 15px; }
+.waveform-bars span:nth-child(4) { height: 12px; }
+.waveform-bars span:nth-child(5) { height: 17px; }
+.waveform-bars span:nth-child(6) { height: 9px; }
+.waveform-bars span:nth-child(7) { height: 18px; }
+.waveform-bars span:nth-child(8) { height: 14px; }
+.waveform-bars span:nth-child(9) { height: 10px; }
+.waveform-bars span:nth-child(10) { height: 15px; }
+.waveform-bars span:nth-child(11) { height: 7px; }
+.waveform-bars span:nth-child(12) { height: 12px; }
+.waveform-bars span:nth-child(13) { height: 16px; }
+.waveform-bars span:nth-child(14) { height: 9px; }
+.waveform-bars span:nth-child(15) { height: 5px; }
 
 .duration {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.4);
-    margin-left: auto;
+    min-width: 28px;
+    text-align: right;
+}
+
+/* Transcribe Button - Right side of player */
+.transcribe-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.transcribe-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.transcribe-icon {
+    font-size: 14px;
+}
+
+/* Loader for Transcription */
+.transcribe-loader {
+    padding: 16px;
+    margin-top: 8px;
+}
+
+.transcribe-loader.hidden {
+    display: none;
+}
+
+.loader-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.loader-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: rgba(150, 180, 150, 0.7);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loader-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Transcription Panel - Muted */
 .transcription-panel {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    padding: 10px;
-    margin-top: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    animation: fadeIn 0.3s ease;
 }
 
-.message.outgoing .transcription-panel {
-    background: rgba(255, 255, 255, 0.02);
+.transcription-panel.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .transcription-toggle {
     display: flex;
     gap: 6px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .toggle-btn {
@@ -368,11 +427,6 @@ body {
 
 .transcription-content.hidden {
     display: none;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .transcript-text {

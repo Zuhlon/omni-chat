@@ -78,11 +78,12 @@
                         </div>
                     </div>
                     
-                    <!-- Voice Message with Transcription -->
-                    <div class="message incoming voice-message">
+                    <!-- Voice Message - Telegram Style -->
+                    <div class="message incoming voice-message" id="voice-1">
                         <div class="message-content">
-                            <div class="voice-header">
-                                <button class="play-btn" onclick="togglePlay(this)">▶️</button>
+                            <!-- Compact Player (initially visible) -->
+                            <div class="voice-player" id="player-1">
+                                <button class="play-btn" onclick="togglePlay(this)">▶</button>
                                 <div class="voice-waveform">
                                     <div class="waveform-bars">
                                         <span></span><span></span><span></span><span></span><span></span>
@@ -91,20 +92,31 @@
                                     </div>
                                     <span class="duration">1:24</span>
                                 </div>
+                                <button class="transcribe-btn" onclick="showTranscription(1)" title="Показать транскрибацию">
+                                    <span class="transcribe-icon">📝</span>
+                                </button>
                             </div>
                             
-                            <!-- Transcription Panel -->
-                            <div class="transcription-panel">
-                                <div class="transcription-toggle">
-                                    <button class="toggle-btn" onclick="showTranscription('full', this)">Полный текст</button>
-                                    <button class="toggle-btn active" onclick="showTranscription('summary', this)">Резюме</button>
+                            <!-- Loader (hidden by default) -->
+                            <div class="transcribe-loader hidden" id="loader-1">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
                                 </div>
-                                <div class="transcription-content hidden" id="transcription-full">
+                            </div>
+                            
+                            <!-- Transcription Panel (hidden by default) -->
+                            <div class="transcription-panel hidden" id="transcription-1">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchTab('full', 1, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchTab('summary', 1, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="full-1">
                                     <p class="transcript-text">
                                         "Прекрасный выбор! Wilson Audio Sasha V — это настоящая жемчужина. Они оснащены 8-дюймовыми вуферами и уникальным твитером с мягким куполом. Усилитель McIntosh MC462 выдаёт 450 Вт на канал в классе AB. Это идеальная комбинация для прослушивания классики и джаза. Могу предложить вам время завтра в 15:00 или послезавтра в 11:00. Сеанс прослушивания длится около полутора часов, у нас будет возможность сравнить разные комбинации усилителей."
                                     </p>
                                 </div>
-                                <div class="transcription-content" id="transcription-summary">
+                                <div class="transcription-content" id="summary-1">
                                     <p class="transcript-text summary">
                                         📋 <strong>Резюме:</strong><br>
                                         • Sasha V + MC462 — отличный выбор для классики и джаза<br>

@@ -70,11 +70,12 @@
                         </div>
                     </div>
                     
-                    <!-- Voice Message with Transcription - Summary View -->
-                    <div class="message outgoing voice-message">
+                    <!-- Voice Message - Telegram Style -->
+                    <div class="message outgoing voice-message" id="voice-2">
                         <div class="message-content">
-                            <div class="voice-header">
-                                <button class="play-btn" onclick="togglePlay(this)">▶️</button>
+                            <!-- Compact Player (initially visible) -->
+                            <div class="voice-player" id="player-2">
+                                <button class="play-btn" onclick="togglePlay(this)">▶</button>
                                 <div class="voice-waveform">
                                     <div class="waveform-bars">
                                         <span></span><span></span><span></span><span></span><span></span>
@@ -83,20 +84,31 @@
                                     </div>
                                     <span class="duration">0:58</span>
                                 </div>
+                                <button class="transcribe-btn" onclick="showTranscription(2)" title="Показать транскрибацию">
+                                    <span class="transcribe-icon">📝</span>
+                                </button>
                             </div>
                             
-                            <!-- Transcription Panel -->
-                            <div class="transcription-panel">
-                                <div class="transcription-toggle">
-                                    <button class="toggle-btn" onclick="showTranscription('full', this)">Полный текст</button>
-                                    <button class="toggle-btn active" onclick="showTranscription('summary', this)">Резюме</button>
+                            <!-- Loader (hidden by default) -->
+                            <div class="transcribe-loader hidden" id="loader-2">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
                                 </div>
-                                <div class="transcription-content hidden" id="transcription-full-2">
+                            </div>
+                            
+                            <!-- Transcription Panel (hidden by default) -->
+                            <div class="transcription-panel hidden" id="transcription-2">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchTab('full', 2, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchTab('summary', 2, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="full-2">
                                     <p class="transcript-text">
                                         "Я в полном восторге от прослушивания! Сочетание Sasha V и MC462 превзошло все мои ожидания. Низкие частоты глубокие и контролируемые, средние — бархатистые, а высокие — кристально чистые без резкости. Хотел бы оформить покупку обоих компонентов. Также интересует возможность доставки и настройки системы у меня дома. У меня комната около 40 квадратных метров, есть специальные акустические панели. Когда сможете организовать доставку?"
                                     </p>
                                 </div>
-                                <div class="transcription-content" id="transcription-summary-2">
+                                <div class="transcription-content" id="summary-2">
                                     <p class="transcript-text summary">
                                         📋 <strong>Резюме:</strong><br>
                                         • Восторг от звучания Sasha V + MC462<br>
