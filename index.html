@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Омниканальный Мессенджер - Аудиозал Hi-End</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="prototype-container">
+        <div class="screen-label">Экран 1: Запись на прослушивание</div>
+        
+        <!-- iPhone 16 Frame -->
+        <div class="iphone-frame">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <span class="time">14:32</span>
+                    <div class="status-icons">
+                        <span class="signal">●●●●○</span>
+                        <span class="wifi">📶</span>
+                        <span class="battery">🔋 87%</span>
+                    </div>
+                </div>
+                
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <button class="back-btn" onclick="goToScreen(2)">←</button>
+                    <div class="contact-info">
+                        <div class="avatar">
+                            <div class="avatar-icon">🎧</div>
+                        </div>
+                        <div class="contact-details">
+                            <h2>Audiophile Zal</h2>
+                            <span class="status">онлайн</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="call-btn" onclick="simulateCall('outgoing')">📞</button>
+                        <button class="menu-btn">⋮</button>
+                    </div>
+                </div>
+                
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Здравствуйте! Добро пожаловать в Audiophile Zal — премиальный аудиозал для истинных ценителей звука. 🎵</p>
+                            <span class="time">14:20</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Добрый день! Хочу записаться на прослушивание акустических систем</p>
+                            <span class="time">14:22</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Отлично! У нас представлена техника брендов: McIntosh, Wilson Audio, dCS, Audio Research. Какой бренд вас интересует?</p>
+                            <span class="time">14:23</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Интересует Wilson Audio Sasha V и McIntosh MC462</p>
+                            <span class="time">14:25</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Voice Message with Transcription -->
+                    <div class="message incoming voice-message">
+                        <div class="message-content">
+                            <div class="voice-header">
+                                <button class="play-btn" onclick="togglePlay(this)">▶️</button>
+                                <div class="voice-waveform">
+                                    <div class="waveform-bars">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <span class="duration">1:24</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Transcription Panel -->
+                            <div class="transcription-panel">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn active" onclick="showTranscription('full', this)">Полный текст</button>
+                                    <button class="toggle-btn" onclick="showTranscription('summary', this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content" id="transcription-full">
+                                    <p class="transcript-text">
+                                        "Прекрасный выбор! Wilson Audio Sasha V — это настоящая жемчужина. Они оснащены 8-дюймовыми вуферами и уникальным твитером с мягким куполом. Усилитель McIntosh MC462 выдаёт 450 Вт на канал в классе AB. Это идеальная комбинация для прослушивания классики и джаза. Могу предложить вам время завтра в 15:00 или послезавтра в 11:00. Сеанс прослушивания длится около полутора часов, у нас будет возможность сравнить разные комбинации усилителей."
+                                    </p>
+                                </div>
+                                <div class="transcription-content hidden" id="transcription-summary">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме:</strong><br>
+                                        • Sasha V + MC462 — отличный выбор для классики и джаза<br>
+                                        • Предложено: завтра 15:00 или послезавтра 11:00<br>
+                                        • Длительность сеанса: ~1.5 часа<br>
+                                        • Возможность сравнения усилителей
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">14:28</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Завтра в 15:00 отлично подходит! Подтверждаю запись</p>
+                            <span class="time">14:30</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- System message -->
+                    <div class="message system">
+                        <div class="system-content">
+                            <span class="calendar-icon">📅</span>
+                            <div class="booking-card">
+                                <h3>Запись на прослушивание</h3>
+                                <p class="booking-date"><strong>Завтра, 15:00</strong></p>
+                                <p class="booking-equipment">Wilson Audio Sasha V + McIntosh MC462</p>
+                                <p class="booking-address">ул. Аудиофильская, 42</p>
+                                <button class="confirm-btn" onclick="confirmBooking()">✓ Подтвердить запись</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call History Panel -->
+                <div class="call-history-panel">
+                    <div class="panel-header" onclick="toggleCallHistory()">
+                        <span class="panel-icon">📞</span>
+                        <span>История звонков</span>
+                        <span class="toggle-icon" id="call-toggle">▼</span>
+                    </div>
+                    <div class="call-list" id="call-list">
+                        <div class="call-item outgoing">
+                            <span class="call-type">📱 Исходящий</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">Сегодня, 14:25</span>
+                            <span class="call-duration">3:42</span>
+                        </div>
+                        <div class="call-item incoming">
+                            <span class="call-type">📲 Входящий</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">Вчера, 16:30</span>
+                            <span class="call-duration">5:18</span>
+                        </div>
+                        <div class="call-item missed">
+                            <span class="call-type">📵 Пропущенный</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">19 янв, 11:45</span>
+                            <span class="call-duration">—</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Input Area -->
+                <div class="input-area">
+                    <button class="attach-btn">📎</button>
+                    <input type="text" placeholder="Напишите сообщение..." class="message-input">
+                    <button class="voice-btn" onclick="startVoiceRecord()">🎤</button>
+                    <button class="send-btn">➤</button>
+                </div>
+            </div>
+            
+            <!-- Home Indicator -->
+            <div class="home-indicator"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn active" onclick="goToScreen(1)">Экран 1</button>
+            <button class="nav-btn" onclick="goToScreen(2)">Экран 2 →</button>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

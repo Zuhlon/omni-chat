@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Омниканальный Мессенджер - Покупка Hi-End</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="prototype-container">
+        <div class="screen-label">Экран 2: Договорённости о покупке</div>
+        
+        <!-- iPhone 16 Frame -->
+        <div class="iphone-frame">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <span class="time">16:45</span>
+                    <div class="status-icons">
+                        <span class="signal">●●●●●</span>
+                        <span class="wifi">📶</span>
+                        <span class="battery">🔋 72%</span>
+                    </div>
+                </div>
+                
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <button class="back-btn" onclick="goToScreen(1)">←</button>
+                    <div class="contact-info">
+                        <div class="avatar">
+                            <div class="avatar-icon">🎧</div>
+                        </div>
+                        <div class="contact-details">
+                            <h2>Audiophile Zal</h2>
+                            <span class="status">онлайн</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="call-btn" onclick="simulateCall('outgoing')">📞</button>
+                        <button class="menu-btn">⋮</button>
+                    </div>
+                </div>
+                
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chat-messages">
+                    <!-- System message - Session completed -->
+                    <div class="message system">
+                        <div class="system-content session-complete">
+                            <span class="session-icon">✨</span>
+                            <p>Сеанс прослушивания завершён</p>
+                            <span class="session-time">Сегодня, 16:30</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Как вам звучание Wilson Audio Sasha V с McIntosh MC462? Это именно то, что вы искали?</p>
+                            <span class="time">16:32</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Потрясающе! Звук просто магический. Беру!</p>
+                            <span class="time">16:33</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Voice Message with Transcription - Summary View -->
+                    <div class="message outgoing voice-message">
+                        <div class="message-content">
+                            <div class="voice-header">
+                                <button class="play-btn" onclick="togglePlay(this)">▶️</button>
+                                <div class="voice-waveform">
+                                    <div class="waveform-bars">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <span class="duration">0:58</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Transcription Panel -->
+                            <div class="transcription-panel">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="showTranscription('full', this)">Полный текст</button>
+                                    <button class="toggle-btn active" onclick="showTranscription('summary', this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="transcription-full-2">
+                                    <p class="transcript-text">
+                                        "Я в полном восторге от прослушивания! Сочетание Sasha V и MC462 превзошло все мои ожидания. Низкие частоты глубокие и контролируемые, средние — бархатистые, а высокие — кристально чистые без резкости. Хотел бы оформить покупку обоих компонентов. Также интересует возможность доставки и настройки системы у меня дома. У меня комната около 40 квадратных метров, есть специальные акустические панели. Когда сможете организовать доставку?"
+                                    </p>
+                                </div>
+                                <div class="transcription-content" id="transcription-summary-2">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме:</strong><br>
+                                        • Восторг от звучания Sasha V + MC462<br>
+                                        • Оформить покупку обоих компонентов<br>
+                                        • Нужна доставка и настройка дома<br>
+                                        • Комната 40 м² с акустической подготовкой<br>
+                                        • Вопрос о сроках доставки
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">16:35</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Incoming message - Price quote -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Отлично! Подготовил коммерческое предложение:</p>
+                            <span class="time">16:38</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Card -->
+                    <div class="message incoming order-card">
+                        <div class="message-content">
+                            <div class="order-details">
+                                <h3>🛒 Ваш заказ</h3>
+                                <div class="order-item">
+                                    <span class="item-name">Wilson Audio Sasha V</span>
+                                    <span class="item-price">₽ 2 850 000</span>
+                                </div>
+                                <div class="order-item">
+                                    <span class="item-name">McIntosh MC462</span>
+                                    <span class="item-price">₽ 1 450 000</span>
+                                </div>
+                                <div class="order-item">
+                                    <span class="item-name">Кабели Transparent Reference</span>
+                                    <span class="item-price">₽ 380 000</span>
+                                </div>
+                                <div class="order-divider"></div>
+                                <div class="order-item discount">
+                                    <span class="item-name">Скидка клиента</span>
+                                    <span class="item-price">-₽ 180 000</span>
+                                </div>
+                                <div class="order-total">
+                                    <span>Итого:</span>
+                                    <span class="total-price">₽ 4 500 000</span>
+                                </div>
+                            </div>
+                            <span class="time">16:39</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Доставка и профессиональная настройка — бесплатно! Можем привезти послезавтра, 23 января, в удобное время.</p>
+                            <span class="time">16:40</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Послезавтра в 14:00 отлично! Подтверждаю заказ</p>
+                            <span class="time">16:42</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Final confirmation card -->
+                    <div class="message system">
+                        <div class="system-content confirmation">
+                            <div class="confirmation-icon">🎉</div>
+                            <h3>Заказ подтверждён!</h3>
+                            <p class="order-number">№ AZ-2024-0121</p>
+                            <div class="delivery-info">
+                                <p><strong>📦 Доставка:</strong> 23 января, 14:00</p>
+                                <p><strong>📍 Адрес:</strong> ул. Меломанская, 15, кв. 42</p>
+                                <p><strong>👨‍🔧 Настройка:</strong> включена</p>
+                            </div>
+                            <button class="track-btn">Отслеживать заказ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call History Panel -->
+                <div class="call-history-panel">
+                    <div class="panel-header" onclick="toggleCallHistory()">
+                        <span class="panel-icon">📞</span>
+                        <span>История звонков</span>
+                        <span class="toggle-icon" id="call-toggle">▼</span>
+                    </div>
+                    <div class="call-list" id="call-list">
+                        <div class="call-item incoming">
+                            <span class="call-type">📲 Входящий</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">Сегодня, 16:50</span>
+                            <span class="call-duration">2:15</span>
+                        </div>
+                        <div class="call-item outgoing">
+                            <span class="call-type">📱 Исходящий</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">Сегодня, 15:45</span>
+                            <span class="call-duration">1:30</span>
+                        </div>
+                        <div class="call-item incoming">
+                            <span class="call-type">📲 Входящий</span>
+                            <span class="call-contact">Audiophile Zal</span>
+                            <span class="call-time">Сегодня, 14:25</span>
+                            <span class="call-duration">3:42</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Input Area -->
+                <div class="input-area">
+                    <button class="attach-btn">📎</button>
+                    <input type="text" placeholder="Напишите сообщение..." class="message-input">
+                    <button class="voice-btn" onclick="startVoiceRecord()">🎤</button>
+                    <button class="send-btn">➤</button>
+                </div>
+            </div>
+            
+            <!-- Home Indicator -->
+            <div class="home-indicator"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn" onclick="goToScreen(1)">← Экран 1</button>
+            <button class="nav-btn active" onclick="goToScreen(2)">Экран 2</button>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
