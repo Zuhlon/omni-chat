@@ -7,7 +7,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1f1f1f 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -23,13 +23,13 @@ body {
 }
 
 .screen-label {
-    color: #FFD700;
-    font-size: 16px;
-    font-weight: 600;
-    background: rgba(255, 215, 0, 0.1);
+    color: #8a8a8a;
+    font-size: 15px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.03);
     padding: 12px 24px;
     border-radius: 25px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(10px);
 }
 
@@ -37,13 +37,13 @@ body {
 .iphone-frame {
     width: 380px;
     height: 820px;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
     border-radius: 55px;
     padding: 12px;
     box-shadow: 
-        0 50px 100px rgba(0, 0, 0, 0.7),
-        inset 0 2px 4px rgba(255, 255, 255, 0.05),
-        0 0 0 2px #3a3a3a;
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.03),
+        0 0 0 2px #333;
     position: relative;
 }
 
@@ -62,7 +62,7 @@ body {
 .iphone-screen {
     width: 100%;
     height: 100%;
-    background: #0e1621;
+    background: #1a1a1a;
     border-radius: 45px;
     overflow: hidden;
     display: flex;
@@ -76,7 +76,7 @@ body {
     transform: translateX(-50%);
     width: 140px;
     height: 5px;
-    background: rgba(255, 215, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     z-index: 100;
 }
@@ -87,10 +87,10 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 50px 25px 10px;
-    background: #17212B;
-    color: rgba(255, 255, 255, 0.8);
+    background: #202020;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .status-icons {
@@ -99,21 +99,21 @@ body {
     font-size: 12px;
 }
 
-/* Chat Header - Telegram Style */
+/* Chat Header - Muted Style */
 .chat-header {
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    background: #17212B;
+    background: #202020;
     color: white;
     gap: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .back-btn {
     background: none;
     border: none;
-    color: #FFD700;
+    color: #7a7a7a;
     font-size: 22px;
     cursor: pointer;
     padding: 5px;
@@ -135,7 +135,7 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,14 +143,14 @@ body {
 }
 
 .contact-details h2 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-details .status {
     font-size: 13px;
-    color: #FFD700;
+    color: #6a9a6a;
 }
 
 .header-actions {
@@ -161,24 +161,24 @@ body {
 .call-btn, .menu-btn {
     background: none;
     border: none;
-    color: #FFD700;
+    color: #7a7a7a;
     font-size: 20px;
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
-    transition: background 0.2s;
+    transition: color 0.2s;
 }
 
 .call-btn:hover, .menu-btn:hover {
-    background: rgba(255, 215, 0, 0.1);
+    color: #9a9a9a;
 }
 
-/* Chat Messages - Telegram Style */
+/* Chat Messages - Muted Style */
 .chat-messages {
     flex: 1;
     overflow-y: auto;
     padding: 12px 10px;
-    background: #0e1621;
+    background: #1a1a1a;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -205,17 +205,17 @@ body {
     line-height: 1.4;
 }
 
-/* Incoming messages - Telegram style */
+/* Incoming messages */
 .message.incoming .message-content {
-    background: #182533;
-    color: #fff;
+    background: #262626;
+    color: rgba(255, 255, 255, 0.85);
     border-bottom-left-radius: 4px;
 }
 
-/* Outgoing messages - Beeline yellow accent */
+/* Outgoing messages */
 .message.outgoing .message-content {
-    background: linear-gradient(135deg, #2B5329 0%, #2A4A28 100%);
-    color: #fff;
+    background: #2d3a2d;
+    color: rgba(255, 255, 255, 0.85);
     border-bottom-right-radius: 4px;
 }
 
@@ -225,19 +225,19 @@ body {
 
 .message-content .time {
     font-size: 12px;
-    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.35);
     float: right;
     margin-left: 12px;
     margin-top: 2px;
 }
 
 .read-status {
-    font-size: 12px;
-    color: #FFD700;
+    font-size: 11px;
+    color: rgba(150, 180, 150, 0.7);
     margin-left: 4px;
 }
 
-/* Voice Message - Telegram Style */
+/* Voice Message - Muted Style */
 .voice-message .message-content {
     min-width: 240px;
     padding: 10px 12px;
@@ -251,22 +251,21 @@ body {
 }
 
 .play-btn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: #FFD700;
+    background: #4a4a4a;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    transition: transform 0.2s, opacity 0.2s;
+    font-size: 13px;
+    transition: background 0.2s;
 }
 
 .play-btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+    background: #5a5a5a;
 }
 
 .voice-waveform {
@@ -280,18 +279,18 @@ body {
     display: flex;
     align-items: center;
     gap: 2px;
-    height: 24px;
+    height: 22px;
 }
 
 .waveform-bars span {
     width: 3px;
-    background: #FFD700;
+    background: #6a6a6a;
     border-radius: 2px;
     animation: wave 1s ease-in-out infinite;
 }
 
 .message.outgoing .waveform-bars span {
-    background: rgba(255, 215, 0, 0.8);
+    background: #7a9a7a;
 }
 
 .waveform-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
@@ -312,27 +311,26 @@ body {
 
 @keyframes wave {
     0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(1.3); }
+    50% { transform: scaleY(1.2); }
 }
 
 .duration {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.4);
     margin-left: auto;
 }
 
-/* Transcription Panel - Dark Theme */
+/* Transcription Panel - Muted */
 .transcription-panel {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     padding: 10px;
     margin-top: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .message.outgoing .transcription-panel {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .transcription-toggle {
@@ -343,25 +341,25 @@ body {
 
 .toggle-btn {
     flex: 1;
-    padding: 8px 12px;
+    padding: 7px 12px;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .toggle-btn.active {
-    background: #FFD700;
-    color: #000;
-    font-weight: 600;
+    background: rgba(150, 160, 150, 0.3);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .transcription-content {
@@ -380,18 +378,14 @@ body {
 .transcript-text {
     font-size: 13px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .transcript-text.summary {
-    background: rgba(255, 215, 0, 0.08);
+    background: rgba(150, 160, 150, 0.08);
     padding: 10px;
     border-radius: 10px;
-    border-left: 3px solid #FFD700;
-}
-
-.message.outgoing .transcript-text.summary {
-    background: rgba(255, 215, 0, 0.05);
+    border-left: 2px solid rgba(150, 160, 150, 0.4);
 }
 
 /* System Messages */
@@ -401,11 +395,11 @@ body {
 }
 
 .system-content {
-    background: #182533;
+    background: #262626;
     padding: 14px 18px;
     border-radius: 16px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .session-complete {
@@ -416,79 +410,80 @@ body {
 }
 
 .session-icon {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 .session-complete p {
     font-weight: 500;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
 }
 
 .session-time {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
 }
 
-/* Booking Card - Beeline Style */
+/* Booking Card - Muted */
 .booking-card {
     text-align: left;
 }
 
 .calendar-icon {
-    font-size: 28px;
+    font-size: 26px;
     display: block;
     margin-bottom: 8px;
 }
 
 .booking-card h3 {
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 8px;
     font-size: 15px;
+    font-weight: 500;
 }
 
 .booking-date {
-    color: #FFD700;
+    color: rgba(180, 200, 180, 0.9);
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .booking-equipment {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.5);
     margin: 6px 0;
 }
 
 .booking-address {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
     margin-bottom: 10px;
 }
 
 .confirm-btn {
     width: 100%;
     padding: 10px;
-    background: #FFD700;
+    background: rgba(120, 150, 120, 0.4);
     border: none;
     border-radius: 12px;
-    color: #000;
-    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: background 0.2s;
     font-size: 14px;
 }
 
 .confirm-btn:hover {
-    opacity: 0.9;
+    background: rgba(120, 150, 120, 0.5);
 }
 
-/* Order Card - Dark Theme */
+/* Order Card - Muted */
 .order-card .message-content {
     min-width: 250px;
 }
 
 .order-details {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     padding: 12px;
 }
@@ -496,7 +491,8 @@ body {
 .order-details h3 {
     font-size: 15px;
     margin-bottom: 10px;
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
 }
 
 .order-item {
@@ -507,21 +503,21 @@ body {
 }
 
 .item-name {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .item-price {
     font-weight: 500;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .order-item.discount .item-price {
-    color: #4CAF50;
+    color: rgba(150, 180, 150, 0.9);
 }
 
 .order-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
     margin: 8px 0;
 }
 
@@ -529,41 +525,43 @@ body {
     display: flex;
     justify-content: space-between;
     padding-top: 8px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .total-price {
-    color: #FFD700;
-    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
 }
 
 /* Confirmation Card */
 .confirmation {
-    background: linear-gradient(135deg, #1a2a1a 0%, #182533 100%);
-    border: 1px solid rgba(76, 175, 80, 0.3);
+    background: linear-gradient(135deg, #262a26 0%, #262626 100%);
+    border: 1px solid rgba(150, 180, 150, 0.15);
 }
 
 .confirmation-icon {
-    font-size: 40px;
+    font-size: 38px;
     margin-bottom: 8px;
 }
 
 .confirmation h3 {
-    color: #4CAF50;
-    font-size: 17px;
+    color: rgba(180, 200, 180, 0.9);
+    font-size: 16px;
     margin-bottom: 4px;
+    font-weight: 500;
 }
 
 .order-number {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
     font-size: 12px;
     margin-bottom: 12px;
 }
 
 .delivery-info {
     text-align: left;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.02);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 12px;
@@ -572,30 +570,30 @@ body {
 .delivery-info p {
     font-size: 12px;
     margin: 4px 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .track-btn {
     width: 100%;
     padding: 10px;
-    background: #FFD700;
+    background: rgba(120, 150, 120, 0.3);
     border: none;
     border-radius: 12px;
-    color: #000;
-    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: background 0.2s;
     font-size: 14px;
 }
 
 .track-btn:hover {
-    opacity: 0.9;
+    background: rgba(120, 150, 120, 0.4);
 }
 
-/* Call History Panel - Telegram Style */
+/* Call History Panel - Muted */
 .call-history-panel {
-    background: #17212B;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: #202020;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
     max-height: 48px;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -611,23 +609,23 @@ body {
     padding: 12px 14px;
     cursor: pointer;
     gap: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .panel-icon {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .panel-header span:nth-child(2) {
     flex: 1;
     font-weight: 500;
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 13px;
 }
 
 .toggle-icon {
     transition: transform 0.3s;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.3);
     font-size: 10px;
 }
 
@@ -653,39 +651,39 @@ body {
 }
 
 .call-item.outgoing .call-type {
-    color: #FFD700;
+    color: rgba(180, 180, 180, 0.8);
 }
 
 .call-item.incoming .call-type {
-    color: #4CAF50;
+    color: rgba(150, 180, 150, 0.8);
 }
 
 .call-item.missed .call-type {
-    color: #E53935;
+    color: rgba(200, 140, 140, 0.8);
 }
 
 .call-contact {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
 }
 
 .call-time {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .call-duration {
     text-align: right;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
 }
 
-/* Input Area - Telegram Style */
+/* Input Area - Muted Style */
 .input-area {
     display: flex;
     align-items: center;
     padding: 8px 10px;
-    background: #17212B;
+    background: #202020;
     gap: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .attach-btn, .voice-btn, .send-btn {
@@ -695,29 +693,28 @@ body {
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
     flex-shrink: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .attach-btn:hover, .voice-btn:hover {
-    opacity: 0.8;
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .send-btn {
-    background: #FFD700;
-    color: #000;
-    width: 36px;
-    height: 36px;
+    background: rgba(120, 150, 120, 0.35);
+    color: rgba(255, 255, 255, 0.8);
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .send-btn:hover {
-    opacity: 0.9;
+    background: rgba(120, 150, 120, 0.45);
 }
 
 .message-input {
@@ -725,22 +722,22 @@ body {
     min-width: 0;
     padding: 10px 14px;
     border: none;
-    background: #242F3D;
+    background: #2a2a2a;
     border-radius: 20px;
     font-size: 15px;
     outline: none;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .message-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .message-input:focus {
-    background: #2B3A4A;
+    background: #323232;
 }
 
-/* Navigation - Beeline Style */
+/* Navigation - Muted Style */
 .navigation {
     display: flex;
     gap: 12px;
@@ -754,24 +751,23 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .nav-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .nav-btn.active {
-    background: #FFD700;
-    color: #000;
-    border-color: #FFD700;
-    font-weight: 600;
+    background: rgba(120, 150, 120, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(120, 150, 120, 0.2);
 }
 
-/* Scrollbar - Dark Theme */
+/* Scrollbar - Muted */
 .chat-messages::-webkit-scrollbar {
     width: 4px;
 }
@@ -781,22 +777,22 @@ body {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
 }
 
-/* Call Modal - Dark Theme */
+/* Call Modal - Muted */
 .call-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     display: none;
     justify-content: center;
     align-items: center;
@@ -808,13 +804,13 @@ body {
 }
 
 .call-modal-content {
-    background: linear-gradient(135deg, #17212B 0%, #0e1621 100%);
-    padding: 40px;
+    background: linear-gradient(135deg, #202020 0%, #1a1a1a 100%);
+    padding: 36px;
     border-radius: 24px;
     text-align: center;
     color: white;
     animation: scaleIn 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @keyframes scaleIn {
@@ -823,65 +819,65 @@ body {
 }
 
 .caller-avatar {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
     margin: 0 auto 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 38px;
 }
 
 .caller-name {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .call-status {
-    font-size: 15px;
-    color: #FFD700;
+    font-size: 14px;
+    color: rgba(150, 180, 150, 0.8);
     margin-bottom: 24px;
 }
 
 .call-actions {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     justify-content: center;
 }
 
 .end-call-btn {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: #E53935;
+    background: rgba(180, 100, 100, 0.5);
     border: none;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
-    transition: transform 0.2s, opacity 0.2s;
+    transition: background 0.2s;
 }
 
 .end-call-btn:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
+    background: rgba(180, 100, 100, 0.65);
 }
 
-/* Toast Notification - Beeline Style */
+/* Toast Notification - Muted */
 .toast {
     position: fixed;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #FFD700;
-    color: #000;
-    padding: 14px 28px;
+    background: rgba(120, 150, 120, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 12px 24px;
     border-radius: 25px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
     z-index: 1001;
 }
