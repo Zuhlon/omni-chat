@@ -62,9 +62,28 @@ function showTranscription(id) {
         
         // Change transcribe button to chevron up (opened state)
         transcribeBtn.innerHTML = '<span class="transcribe-icon chevron-up">▲</span>';
-        transcribeBtn.onclick = null; // Remove click handler
-        transcribeBtn.style.cursor = 'default';
+        transcribeBtn.disabled = false;
+        transcribeBtn.style.cursor = 'pointer';
+        
+        // Set click handler to close transcription
+        transcribeBtn.onclick = () => closeTranscription(id);
     }, 3000);
+}
+
+// Close transcription panel
+function closeTranscription(id) {
+    const player = document.getElementById(`player-${id}`);
+    const transcription = document.getElementById(`transcription-${id}`);
+    const transcribeBtn = player.querySelector('.transcribe-btn');
+    
+    // Hide transcription panel
+    transcription.classList.add('hidden');
+    
+    // Change button back to "A→" (closed state)
+    transcribeBtn.innerHTML = '<span class="transcribe-icon">A→</span>';
+    
+    // Set click handler to open transcription again
+    transcribeBtn.onclick = () => showTranscription(id);
 }
 
 // Switch between tabs (full text / summary)
