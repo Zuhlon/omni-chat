@@ -60,8 +60,8 @@ function showTranscription(id) {
         // Ensure summary tab is active by default
         switchTab('summary', id, transcription.querySelector('.toggle-btn:last-child'));
         
-        // Change transcribe button to "opened" state
-        transcribeBtn.innerHTML = '<span class="transcribe-icon">📄</span>';
+        // Change transcribe button to chevron up (opened state)
+        transcribeBtn.innerHTML = '<span class="transcribe-icon chevron-up">▲</span>';
         transcribeBtn.onclick = null; // Remove click handler
         transcribeBtn.style.cursor = 'default';
     }, 3000);

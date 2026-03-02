@@ -319,9 +319,9 @@ body {
 
 /* Transcribe Button - Right side of player */
 .transcribe-btn {
-    width: 28px;
+    width: 32px;
     height: 28px;
-    min-width: 28px;
+    min-width: 32px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.06);
     border: none;
@@ -330,14 +330,27 @@ body {
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+    padding: 0 6px;
 }
 
 .transcribe-btn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.transcribe-btn:disabled {
+    cursor: default;
+}
+
 .transcribe-icon {
-    font-size: 14px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.transcribe-icon.chevron-up {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* Loader for Transcription */
