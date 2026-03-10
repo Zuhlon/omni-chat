@@ -121,6 +121,8 @@
                 </div>
 
                 <div class="chat-messages" id="chat-messages">
+                    <!-- ========== ЭКРАН 1: Запись на прослушивание ========== -->
+                    
                     <!-- Incoming message -->
                     <div class="message incoming">
                         <div class="message-content">
@@ -152,7 +154,7 @@
                         </div>
                     </div>
 
-                    <!-- Voice Message -->
+                    <!-- Voice Message - Incoming -->
                     <div class="message incoming voice-message" id="voice-1">
                         <div class="message-content">
                             <div class="voice-player" id="player-1">
@@ -165,7 +167,7 @@
                                     </div>
                                     <span class="duration">1:24</span>
                                 </div>
-                                <button class="transcribe-btn" onclick="showTranscription(1)">
+                                <button class="transcribe-btn" onclick="showTranscription(1)" title="Показать транскрибацию">
                                     <span class="transcribe-icon">A→</span>
                                 </button>
                             </div>
@@ -181,17 +183,117 @@
                                     <button class="toggle-btn active" onclick="switchTab('summary', 1, this)">Резюме</button>
                                 </div>
                                 <div class="transcription-content hidden" id="full-1">
-                                    <p class="transcript-text">"Прекрасный выбор! Wilson Audio Sasha V — это настоящая жемчужина..."</p>
+                                    <p class="transcript-text">
+                                        "Прекрасный выбор! Wilson Audio Sasha V — это настоящая жемчужина. Они оснащены 8-дюймовыми вуферами и уникальным твитером с мягким куполом. Усилитель McIntosh MC462 выдаёт 450 Вт на канал в классе AB. Это идеальная комбинация для прослушивания классики и джаза. Могу предложить вам время завтра в 15:00 или послезавтра в 11:00. Сеанс прослушивания длится около полутора часов, у нас будет возможность сравнить разные комбинации усилителей."
+                                    </p>
                                 </div>
                                 <div class="transcription-content" id="summary-1">
                                     <p class="transcript-text summary">
                                         📋 <strong>Резюме:</strong><br>
-                                        • Sasha V + MC462 — отличный выбор<br>
-                                        • Предложено: завтра 15:00 или послезавтра 11:00
+                                        • Sasha V + MC462 — отличный выбор для классики и джаза<br>
+                                        • Предложено: завтра 15:00 или послезавтра 11:00<br>
+                                        • Длительность сеанса: ~1.5 часа<br>
+                                        • Возможность сравнения усилителей
                                     </p>
                                 </div>
                             </div>
                             <span class="time">14:28</span>
+                        </div>
+                    </div>
+
+                    <!-- Video Call Recording -->
+                    <div class="message incoming video-call-message" id="video-1">
+                        <div class="message-content">
+                            <div class="video-call-header">
+                                <span class="video-call-icon">📹</span>
+                                <span class="video-call-title">Видеозвонок</span>
+                                <span class="video-call-duration">5:32</span>
+                            </div>
+                            <div class="video-player-container" id="video-player-1">
+                                <div class="video-thumbnail" onclick="playVideo(1)">
+                                    <div class="video-preview">
+                                        <div class="video-avatar-left">🎧</div>
+                                        <div class="video-avatar-right">👤</div>
+                                    </div>
+                                    <button class="video-play-btn">▶</button>
+                                    <span class="video-time">5:32</span>
+                                </div>
+                                <div class="video-controls">
+                                    <span class="video-date">Сегодня, 14:20</span>
+                                    <button class="transcribe-btn" onclick="showVideoTranscription(1)" title="Показать транскрибацию">
+                                        <span class="transcribe-icon">A→</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="video-modal hidden" id="video-modal-1">
+                                <div class="video-modal-content">
+                                    <div class="video-modal-header">
+                                        <span>📹 Запись видеозвонка</span>
+                                        <button class="video-close-btn" onclick="closeVideo(1)">✕</button>
+                                    </div>
+                                    <div class="video-modal-body">
+                                        <div class="video-call-visuals">
+                                            <div class="video-participant">
+                                                <div class="participant-avatar">🎧</div>
+                                                <span class="participant-name">Audiophile Zal</span>
+                                            </div>
+                                            <div class="video-participant">
+                                                <div class="participant-avatar">👤</div>
+                                                <span class="participant-name">Вы</span>
+                                            </div>
+                                        </div>
+                                        <div class="video-progress">
+                                            <div class="video-progress-bar">
+                                                <div class="video-progress-fill" style="width: 35%"></div>
+                                            </div>
+                                            <span class="video-progress-time">1:56 / 5:32</span>
+                                        </div>
+                                    </div>
+                                    <div class="video-modal-controls">
+                                        <button class="video-ctrl-btn" onclick="toggleVideoPlay(1)">⏸</button>
+                                        <button class="video-ctrl-btn">⏪</button>
+                                        <button class="video-ctrl-btn">⏩</button>
+                                        <button class="video-ctrl-btn">🔊</button>
+                                        <button class="video-ctrl-btn">⛶</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="transcribe-loader hidden" id="video-loader-1">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
+                                </div>
+                            </div>
+                            <div class="transcription-panel hidden" id="video-transcription-1">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchVideoTab('full', 1, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchVideoTab('summary', 1, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="video-full-1">
+                                    <p class="transcript-text">
+                                        <strong>[00:00]</strong> Добрый день! Рады видеть вас на видеозвонке.<br>
+                                        <strong>[00:15]</strong> Сегодня обсудим детали вашего визита в аудиозал.<br>
+                                        <strong>[00:45]</strong> Wilson Audio Sasha V — наша флагманская модель, уверены, вы оцените звучание.<br>
+                                        <strong>[01:30]</strong> Усилитель McIntosh MC462 отлично сочетается с этими колонками, выдаёт чистые 450 Вт.<br>
+                                        <strong>[02:15]</strong> Для прослушивания классики и джаза это идеальный тандем.<br>
+                                        <strong>[03:00]</strong> Можем предложить слоты: завтра в 15:00 или послезавтра в 11:00.<br>
+                                        <strong>[04:20]</strong> Сеанс займёт около полутора часов, будет возможность сравнить разные комбинации.<br>
+                                        <strong>[05:00]</strong> Ждём вас, подтверждение пришлите в чат. До встречи!
+                                    </p>
+                                </div>
+                                <div class="transcription-content" id="video-summary-1">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме видеозвонка:</strong><br>
+                                        • Обсудили детали визита в аудиозал<br>
+                                        • Sasha V + MC462 — идеальный тандем для классики/джаза<br>
+                                        • Предложено: завтра 15:00 или послезавтра 11:00<br>
+                                        • Длительность сеанса: ~1.5 часа<br>
+                                        • Сравнение комбинаций усилителей<br>
+                                        • Требуется подтверждение в чате
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">14:29</span>
                         </div>
                     </div>
 
@@ -200,6 +302,163 @@
                             <p>Завтра в 15:00 отлично подходит! Подтверждаю запись</p>
                             <span class="time">14:30</span>
                             <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <!-- System message - Booking -->
+                    <div class="message system">
+                        <div class="system-content">
+                            <span class="calendar-icon">📅</span>
+                            <div class="booking-card">
+                                <h3>Запись на прослушивание</h3>
+                                <p class="booking-date"><strong>Завтра, 15:00</strong></p>
+                                <p class="booking-equipment">Wilson Audio Sasha V + McIntosh MC462</p>
+                                <p class="booking-address">ул. Аудиофильская, 42</p>
+                                <button class="confirm-btn" onclick="confirmBooking()">✓ Подтвердить запись</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========== ЭКРАН 2: Покупка после прослушивания ========== -->
+                    
+                    <!-- System message - Session completed -->
+                    <div class="message system">
+                        <div class="system-content session-complete">
+                            <span class="session-icon">✨</span>
+                            <p>Сеанс прослушивания завершён</p>
+                            <span class="session-time">Сегодня, 16:30</span>
+                        </div>
+                    </div>
+
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Как вам звучание Wilson Audio Sasha V с McIntosh MC462? Это именно то, что вы искали?</p>
+                            <span class="time">16:32</span>
+                        </div>
+                    </div>
+
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Потрясающе! Звук просто магический. Беру!</p>
+                            <span class="time">16:33</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Voice Message - Outgoing -->
+                    <div class="message outgoing voice-message" id="voice-2">
+                        <div class="message-content">
+                            <div class="voice-player" id="player-2">
+                                <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                                <div class="voice-waveform">
+                                    <div class="waveform-bars">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <span class="duration">0:58</span>
+                                </div>
+                                <button class="transcribe-btn" onclick="showTranscription(2)" title="Показать транскрибацию">
+                                    <span class="transcribe-icon">A→</span>
+                                </button>
+                            </div>
+                            <div class="transcribe-loader hidden" id="loader-2">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
+                                </div>
+                            </div>
+                            <div class="transcription-panel hidden" id="transcription-2">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchTab('full', 2, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchTab('summary', 2, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="full-2">
+                                    <p class="transcript-text">
+                                        "Я в полном восторге от прослушивания! Сочетание Sasha V и MC462 превзошло все мои ожидания. Низкие частоты глубокие и контролируемые, средние — бархатистые, а высокие — кристально чистые без резкости. Хотел бы оформить покупку обоих компонентов. Также интересует возможность доставки и настройки системы у меня дома. У меня комната около 40 квадратных метров, есть специальные акустические панели. Когда сможете организовать доставку?"
+                                    </p>
+                                </div>
+                                <div class="transcription-content" id="summary-2">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме:</strong><br>
+                                        • Восторг от звучания Sasha V + MC462<br>
+                                        • Оформить покупку обоих компонентов<br>
+                                        • Нужна доставка и настройка дома<br>
+                                        • Комната 40 м² с акустической подготовкой<br>
+                                        • Вопрос о сроках доставки
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">16:35</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Отлично! Подготовил коммерческое предложение:</p>
+                            <span class="time">16:38</span>
+                        </div>
+                    </div>
+
+                    <!-- Order Card -->
+                    <div class="message incoming order-card">
+                        <div class="message-content">
+                            <div class="order-details">
+                                <h3>🛒 Ваш заказ</h3>
+                                <div class="order-item">
+                                    <span class="item-name">Wilson Audio Sasha V</span>
+                                    <span class="item-price">₽ 2 850 000</span>
+                                </div>
+                                <div class="order-item">
+                                    <span class="item-name">McIntosh MC462</span>
+                                    <span class="item-price">₽ 1 450 000</span>
+                                </div>
+                                <div class="order-item">
+                                    <span class="item-name">Кабели Transparent Reference</span>
+                                    <span class="item-price">₽ 380 000</span>
+                                </div>
+                                <div class="order-divider"></div>
+                                <div class="order-item discount">
+                                    <span class="item-name">Скидка клиента</span>
+                                    <span class="item-price">-₽ 180 000</span>
+                                </div>
+                                <div class="order-total">
+                                    <span>Итого:</span>
+                                    <span class="total-price">₽ 4 500 000</span>
+                                </div>
+                            </div>
+                            <span class="time">16:39</span>
+                        </div>
+                    </div>
+
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Доставка и профессиональная настройка — бесплатно! Можем привезти послезавтра, 23 января, в удобное время.</p>
+                            <span class="time">16:40</span>
+                        </div>
+                    </div>
+
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Послезавтра в 14:00 отлично! Подтверждаю заказ</p>
+                            <span class="time">16:42</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Final confirmation card -->
+                    <div class="message system">
+                        <div class="system-content confirmation">
+                            <div class="confirmation-icon">🎉</div>
+                            <h3>Заказ подтверждён!</h3>
+                            <p class="order-number">№ AZ-2024-0121</p>
+                            <div class="delivery-info">
+                                <p><strong>📦 Доставка:</strong> 23 января, 14:00</p>
+                                <p><strong>📍 Адрес:</strong> ул. Меломанская, 15, кв. 42</p>
+                                <p><strong>👨‍🔧 Настройка:</strong> включена</p>
+                            </div>
+                            <button class="track-btn">Отслеживать заказ</button>
                         </div>
                     </div>
                 </div>

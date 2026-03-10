@@ -115,6 +115,127 @@ function closeVideoCallModal() {
     document.querySelector('.status-text').textContent = 'Вызов...';
 }
 
+// Play video (open modal)
+function playVideo(id) {
+    const modal = document.getElementById(`video-modal-${id}`);
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+// Close video modal
+function closeVideo(id) {
+    const modal = document.getElementById(`video-modal-${id}`);
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Toggle video play/pause
+function toggleVideoPlay(id) {
+    const btn = event.target;
+    const isPlaying = btn.dataset.playing === 'true';
+    
+    if (isPlaying) {
+        btn.textContent = '▶';
+        btn.dataset.playing = 'false';
+    } else {
+        btn.textContent = '⏸';
+        btn.dataset.playing = 'true';
+        
+        const progressFill = document.querySelector(`#video-modal-${id} .video-progress-fill`);
+        const progressTime = document.querySelector(`#video-modal-${id} .video-progress-time`);
+        let progress = parseFloat(progressFill.style.width) || 0;
+        
+        const interval = setInterval(() => {
+            if (btn.dataset.playing !== 'true' || progress >= 100) {
+                clearInterval(interval);
+                if (progress >= 100) {
+                    btn.textContent = '▶';
+                    btn.dataset.playing = 'false';
+                }
+                return;
+            }
+            progress += 0.3;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+            
+            const totalSeconds = 332;
+            const currentSeconds = Math.floor((progress / 100) * totalSeconds);
+            const mins = Math.floor(currentSeconds / 60);
+            const secs = currentSeconds % 60;
+            progressTime.textContent = `${mins}:${secs.toString().padStart(2, '0')} / 5:32`;
+        }, 100);
+    }
+}
+
+// Show video transcription
+function showVideoTranscription(id) {
+    const container = document.getElementById(`video-player-${id}`);
+    const loader = document.getElementById(`video-loader-${id}`);
+    const transcription = document.getElementById(`video-transcription-${id}`);
+    const transcribeBtn = container.querySelector('.transcribe-btn');
+    
+    transcribeBtn.disabled = true;
+    transcribeBtn.style.cursor = 'default';
+    container.style.opacity = '0.5';
+    
+    loader.classList.remove('hidden');
+    
+    setTimeout(() => {
+        container.style.opacity = '1';
+        loader.classList.add('hidden');
+        transcription.classList.remove('hidden');
+        
+        switchVideoTab('summary', id, transcription.querySelector('.toggle-btn:last-child'));
+        
+        transcribeBtn.innerHTML = '<span class="transcribe-icon">▲</span>';
+        transcribeBtn.disabled = false;
+        transcribeBtn.style.cursor = 'pointer';
+        transcribeBtn.onclick = () => closeVideoTranscription(id);
+    }, 3000);
+}
+
+// Close video transcription
+function closeVideoTranscription(id) {
+    const container = document.getElementById(`video-player-${id}`);
+    const transcription = document.getElementById(`video-transcription-${id}`);
+    const transcribeBtn = container.querySelector('.transcribe-btn');
+    
+    transcription.classList.add('hidden');
+    transcribeBtn.innerHTML = '<span class="transcribe-icon">A→</span>';
+    transcribeBtn.onclick = () => showVideoTranscription(id);
+}
+
+// Switch video tabs
+function switchVideoTab(type, id, button) {
+    const panel = button.closest('.transcription-panel');
+    const buttons = panel.querySelectorAll('.toggle-btn');
+    const fullContent = document.getElementById(`video-full-${id}`);
+    const summaryContent = document.getElementById(`video-summary-${id}`);
+    
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    if (type === 'full') {
+        fullContent.classList.remove('hidden');
+        summaryContent.classList.add('hidden');
+    } else {
+        fullContent.classList.add('hidden');
+        summaryContent.classList.remove('hidden');
+    }
+}
+
+// Confirm booking
+function confirmBooking() {
+    showToast('✓ Запись подтверждена!');
+    const btn = document.querySelector('.confirm-btn');
+    if (btn) {
+        btn.textContent = '✓ Подтверждено';
+        btn.style.background = 'rgba(100, 140, 100, 0.5)';
+        btn.disabled = true;
+    }
+}
+
 // Show toast
 function showToast(message) {
     const existingToast = document.querySelector('.toast');
