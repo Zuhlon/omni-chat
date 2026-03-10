@@ -4,6 +4,8 @@ function goToScreen(screenNumber) {
         window.location.href = 'index.html';
     } else if (screenNumber === 2) {
         window.location.href = 'screen2.html';
+    } else if (screenNumber === 3) {
+        window.location.href = 'desktop.html';
     }
 }
 

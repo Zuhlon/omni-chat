@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Десктоп - Омниканальный Мессенджер</title>
+    <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+    <div class="desktop-container">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-brand">
+                <span class="brand-icon">🎧</span>
+                <span class="brand-text">Audiophile Zal</span>
+                <span class="brand-status">Оператор онлайн</span>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab" onclick="goToScreen(1)">Экран 1</button>
+                <button class="nav-tab" onclick="goToScreen(2)">Экран 2</button>
+                <button class="nav-tab active">Десктоп</button>
+            </div>
+            <div class="nav-user">
+                <span class="user-name">Алексей М.</span>
+                <div class="user-avatar">👤</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar - Chat List -->
+            <aside class="sidebar-left">
+                <div class="sidebar-header">
+                    <h3>Чаты</h3>
+                    <span class="chat-count">12 активных</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск чатов...">
+                </div>
+                <div class="chat-list">
+                    <div class="chat-item active" onclick="selectChat(this)">
+                        <div class="chat-avatar">🎧</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Audiophile Zal</span>
+                            <span class="chat-preview">Завтра в 15:00 отлично подходит...</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">14:30</span>
+                            <span class="chat-unread">2</span>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="selectChat(this)">
+                        <div class="chat-avatar">🎵</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Hi-Fi Stereo</span>
+                            <span class="chat-preview">Интересует доставка усилителя...</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">13:45</span>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="selectChat(this)">
+                        <div class="chat-avatar">🔊</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Sound Premium</span>
+                            <span class="chat-preview">Какие кабели порекомендуете?</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">12:20</span>
+                            <span class="chat-unread">1</span>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="selectChat(this)">
+                        <div class="chat-avatar">📻</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Vinyl Records Club</span>
+                            <span class="chat-preview">Хочу записаться на прослушивание...</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">Вчера</span>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="selectChat(this)">
+                        <div class="chat-avatar">🎚️</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Audio Lab</span>
+                            <span class="chat-preview">Спасибо за консультацию!</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">Вчера</span>
+                        </div>
+                    </div>
+                    <div class="chat-item" onclick="selectChat(this)">
+                        <div class="chat-avatar">💿</div>
+                        <div class="chat-info">
+                            <span class="chat-name">Digital Audio</span>
+                            <span class="chat-preview">Когда будет доступен MC462?</span>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-time">Пн</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center - Chat Area -->
+            <main class="chat-area">
+                <div class="chat-header">
+                    <div class="chat-contact">
+                        <div class="contact-avatar">🎧</div>
+                        <div class="contact-info">
+                            <h2>Audiophile Zal</h2>
+                            <span class="contact-status">онлайн</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" onclick="startVideoCall()" title="Видеозвонок">📹</button>
+                        <button class="action-btn" title="Голосовой звонок">📞</button>
+                        <button class="action-btn" title="Информация">ℹ️</button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Здравствуйте! Добро пожаловать в Audiophile Zal — премиальный аудиозал для истинных ценителей звука. 🎵</p>
+                            <span class="time">14:20</span>
+                        </div>
+                    </div>
+
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Добрый день! Хочу записаться на прослушивание акустических систем</p>
+                            <span class="time">14:22</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <div class="message incoming">
+                        <div class="message-content">
+                            <p>Отлично! У нас представлена техника брендов: McIntosh, Wilson Audio, dCS, Audio Research. Какой бренд вас интересует?</p>
+                            <span class="time">14:23</span>
+                        </div>
+                    </div>
+
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Интересует Wilson Audio Sasha V и McIntosh MC462</p>
+                            <span class="time">14:25</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Voice Message -->
+                    <div class="message incoming voice-message" id="voice-1">
+                        <div class="message-content">
+                            <div class="voice-player" id="player-1">
+                                <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                                <div class="voice-waveform">
+                                    <div class="waveform-bars">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <span class="duration">1:24</span>
+                                </div>
+                                <button class="transcribe-btn" onclick="showTranscription(1)">
+                                    <span class="transcribe-icon">A→</span>
+                                </button>
+                            </div>
+                            <div class="transcribe-loader hidden" id="loader-1">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
+                                </div>
+                            </div>
+                            <div class="transcription-panel hidden" id="transcription-1">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchTab('full', 1, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchTab('summary', 1, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="full-1">
+                                    <p class="transcript-text">"Прекрасный выбор! Wilson Audio Sasha V — это настоящая жемчужина..."</p>
+                                </div>
+                                <div class="transcription-content" id="summary-1">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме:</strong><br>
+                                        • Sasha V + MC462 — отличный выбор<br>
+                                        • Предложено: завтра 15:00 или послезавтра 11:00
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">14:28</span>
+                        </div>
+                    </div>
+
+                    <div class="message outgoing">
+                        <div class="message-content">
+                            <p>Завтра в 15:00 отлично подходит! Подтверждаю запись</p>
+                            <span class="time">14:30</span>
+                            <span class="read-status">✓✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <button class="attach-btn">📎</button>
+                    <input type="text" placeholder="Напишите сообщение..." class="message-input">
+                    <button class="voice-btn">🎤</button>
+                    <button class="send-btn">➤</button>
+                </div>
+            </main>
+
+            <!-- Right Sidebar - Widgets -->
+            <aside class="sidebar-right">
+                <!-- KPI Widget -->
+                <div class="widget kpi-widget">
+                    <div class="widget-header">
+                        <h4>📊 Мой KPI</h4>
+                        <span class="period">Январь</span>
+                    </div>
+                    <div class="kpi-progress">
+                        <div class="kpi-circle">
+                            <svg viewBox="0 0 36 36">
+                                <path class="kpi-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="kpi-fill" stroke-dasharray="87, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            </svg>
+                            <span class="kpi-percent">87%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-rating">
+                        <span class="rating-label">Рейтинг среди сотрудников</span>
+                        <div class="rating-stars">
+                            <span class="star active">⭐</span>
+                            <span class="star active">🥈</span>
+                            <span class="star">3</span>
+                            <span class="star">4</span>
+                            <span class="star">5</span>
+                        </div>
+                        <span class="rating-position">2-е место из 8</span>
+                    </div>
+                    <div class="kpi-details">
+                        <div class="kpi-item">
+                            <span class="kpi-name">Обработано чатов</span>
+                            <span class="kpi-value">156</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span class="kpi-name">Среднее время ответа</span>
+                            <span class="kpi-value">2.3 мин</span>
+                        </div>
+                        <div class="kpi-item">
+                            <span class="kpi-name">Удовлетворённость</span>
+                            <span class="kpi-value">4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks Widget -->
+                <div class="widget tasks-widget">
+                    <div class="widget-header">
+                        <h4>✅ Задачи на сегодня</h4>
+                        <span class="task-count">3/5</span>
+                    </div>
+                    <div class="task-list">
+                        <div class="task-item completed">
+                            <input type="checkbox" checked disabled>
+                            <span>Перезвонить клиенту Hi-Fi Stereo</span>
+                        </div>
+                        <div class="task-item completed">
+                            <input type="checkbox" checked disabled>
+                            <span>Подтвердить запись на 15:00</span>
+                        </div>
+                        <div class="task-item completed">
+                            <input type="checkbox" checked disabled>
+                            <span>Отправить прайс-лист</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>Подготовить коммерческое предложение</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox">
+                            <span>Созвон с поставщиком в 17:00</span>
+                        </div>
+                    </div>
+                    <button class="add-task-btn">+ Добавить задачу</button>
+                </div>
+
+                <!-- Calendar Widget -->
+                <div class="widget calendar-widget">
+                    <div class="widget-header">
+                        <h4>📅 Календарь</h4>
+                        <span class="calendar-date">Январь 2025</span>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day header">Пн</div>
+                        <div class="calendar-day header">Вт</div>
+                        <div class="calendar-day header">Ср</div>
+                        <div class="calendar-day header">Чт</div>
+                        <div class="calendar-day header">Пт</div>
+                        <div class="calendar-day header">Сб</div>
+                        <div class="calendar-day header">Вс</div>
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">31</div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day today">16</div>
+                        <div class="calendar-day has-event">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day has-event">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day has-event">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        <div class="calendar-day">26</div>
+                    </div>
+                    <div class="calendar-events">
+                        <div class="event-item">
+                            <span class="event-time">15:00</span>
+                            <span class="event-title">Прослушивание Sasha V</span>
+                        </div>
+                        <div class="event-item">
+                            <span class="event-time">17:00</span>
+                            <span class="event-title">Созвон с поставщиком</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Video Call Widget -->
+                <div class="widget video-widget">
+                    <div class="widget-header">
+                        <h4>📹 Видеозвонок</h4>
+                    </div>
+                    <div class="video-quick-actions">
+                        <button class="quick-video-btn" onclick="startVideoCall()">
+                            <span class="btn-icon">📹</span>
+                            <span class="btn-text">Начать видеозвонок</span>
+                        </button>
+                        <button class="quick-video-btn secondary">
+                            <span class="btn-icon">📅</span>
+                            <span class="btn-text">Запланировать встречу</span>
+                        </button>
+                    </div>
+                    <div class="recent-calls">
+                        <span class="recent-label">Недавние звонки:</span>
+                        <div class="recent-call-item">
+                            <span class="call-avatar">🎧</span>
+                            <span class="call-name">Audiophile Zal</span>
+                            <span class="call-when">Сегодня, 14:20</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Video Call Modal -->
+    <div class="video-call-modal hidden" id="videoCallModal">
+        <div class="video-call-content">
+            <div class="video-call-header">
+                <span>📹 Видеозвонок</span>
+                <button class="close-video-btn" onclick="closeVideoCallModal()">✕</button>
+            </div>
+            <div class="video-call-body">
+                <div class="video-participants">
+                    <div class="video-participant-large">
+                        <div class="participant-avatar-large">🎧</div>
+                        <span class="participant-name-large">Audiophile Zal</span>
+                    </div>
+                    <div class="video-participant-small">
+                        <div class="participant-avatar-small">👤</div>
+                    </div>
+                </div>
+                <div class="video-call-status">
+                    <span class="status-text">Вызов...</span>
+                </div>
+            </div>
+            <div class="video-call-controls">
+                <button class="video-control-btn">🎤</button>
+                <button class="video-control-btn">📹</button>
+                <button class="video-control-btn end" onclick="closeVideoCallModal()">📵</button>
+                <button class="video-control-btn">🖥️</button>
+                <button class="video-control-btn">⚙️</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/desktop.js"></script>
+</body>
+</html>
