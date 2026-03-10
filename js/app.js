@@ -107,6 +107,139 @@ function switchTab(type, id, button) {
     }
 }
 
+// Video Call Functions
+
+// Play video (open modal)
+function playVideo(id) {
+    const modal = document.getElementById(`video-modal-${id}`);
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+// Close video modal
+function closeVideo(id) {
+    const modal = document.getElementById(`video-modal-${id}`);
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Toggle video play/pause
+function toggleVideoPlay(id) {
+    const btn = event.target;
+    const isPlaying = btn.dataset.playing === 'true';
+    
+    if (isPlaying) {
+        btn.textContent = '▶';
+        btn.dataset.playing = 'false';
+    } else {
+        btn.textContent = '⏸';
+        btn.dataset.playing = 'true';
+        
+        // Simulate progress
+        const progressFill = document.querySelector(`#video-modal-${id} .video-progress-fill`);
+        const progressTime = document.querySelector(`#video-modal-${id} .video-progress-time`);
+        let progress = parseFloat(progressFill.style.width) || 0;
+        
+        const interval = setInterval(() => {
+            if (btn.dataset.playing !== 'true' || progress >= 100) {
+                clearInterval(interval);
+                if (progress >= 100) {
+                    btn.textContent = '▶';
+                    btn.dataset.playing = 'false';
+                }
+                return;
+            }
+            progress += 0.3;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+            
+            // Update time display
+            const totalSeconds = 332; // 5:32
+            const currentSeconds = Math.floor((progress / 100) * totalSeconds);
+            const mins = Math.floor(currentSeconds / 60);
+            const secs = currentSeconds % 60;
+            progressTime.textContent = `${mins}:${secs.toString().padStart(2, '0')} / 5:32`;
+        }, 100);
+    }
+}
+
+// Show video transcription with 3-second loader
+function showVideoTranscription(id) {
+    const container = document.getElementById(`video-player-${id}`);
+    const loader = document.getElementById(`video-loader-${id}`);
+    const transcription = document.getElementById(`video-transcription-${id}`);
+    const transcribeBtn = container.querySelector('.transcribe-btn');
+    
+    // Disable button
+    transcribeBtn.disabled = true;
+    transcribeBtn.style.cursor = 'default';
+    container.style.opacity = '0.5';
+    
+    // Show loader
+    loader.classList.remove('hidden');
+    
+    // After 3 seconds, show transcription
+    setTimeout(() => {
+        // Restore container
+        container.style.opacity = '1';
+        
+        // Hide loader
+        loader.classList.add('hidden');
+        
+        // Show transcription panel
+        transcription.classList.remove('hidden');
+        
+        // Ensure summary tab is active by default
+        switchVideoTab('summary', id, transcription.querySelector('.toggle-btn:last-child'));
+        
+        // Change button to chevron up (opened state)
+        transcribeBtn.innerHTML = '<span class="transcribe-icon chevron-up">▲</span>';
+        transcribeBtn.disabled = false;
+        transcribeBtn.style.cursor = 'pointer';
+        
+        // Set click handler to close transcription
+        transcribeBtn.onclick = () => closeVideoTranscription(id);
+    }, 3000);
+}
+
+// Close video transcription panel
+function closeVideoTranscription(id) {
+    const container = document.getElementById(`video-player-${id}`);
+    const transcription = document.getElementById(`video-transcription-${id}`);
+    const transcribeBtn = container.querySelector('.transcribe-btn');
+    
+    // Hide transcription panel
+    transcription.classList.add('hidden');
+    
+    // Change button back to "A→" (closed state)
+    transcribeBtn.innerHTML = '<span class="transcribe-icon">A→</span>';
+    
+    // Set click handler to open transcription again
+    transcribeBtn.onclick = () => showVideoTranscription(id);
+}
+
+// Switch between video tabs (full text / summary)
+function switchVideoTab(type, id, button) {
+    const panel = button.closest('.transcription-panel');
+    const buttons = panel.querySelectorAll('.toggle-btn');
+    const fullContent = document.getElementById(`video-full-${id}`);
+    const summaryContent = document.getElementById(`video-summary-${id}`);
+    
+    // Update active button
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Show/hide content
+    if (type === 'full') {
+        fullContent.classList.remove('hidden');
+        summaryContent.classList.add('hidden');
+    } else {
+        fullContent.classList.add('hidden');
+        summaryContent.classList.remove('hidden');
+    }
+}
+
 // Toggle call history panel
 function toggleCallHistory() {
     const panel = document.querySelector('.call-history-panel');

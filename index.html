@@ -130,6 +130,110 @@
                         </div>
                     </div>
                     
+                    <!-- Video Call Recording -->
+                    <div class="message incoming video-call-message" id="video-1">
+                        <div class="message-content">
+                            <div class="video-call-header">
+                                <span class="video-call-icon">📹</span>
+                                <span class="video-call-title">Видеозвонок</span>
+                                <span class="video-call-duration">5:32</span>
+                            </div>
+                            
+                            <!-- Video Player -->
+                            <div class="video-player-container" id="video-player-1">
+                                <div class="video-thumbnail" onclick="playVideo(1)">
+                                    <div class="video-preview">
+                                        <div class="video-avatar-left">🎧</div>
+                                        <div class="video-avatar-right">👤</div>
+                                    </div>
+                                    <button class="video-play-btn">▶</button>
+                                    <span class="video-time">5:32</span>
+                                </div>
+                                <div class="video-controls">
+                                    <span class="video-date">Сегодня, 14:20</span>
+                                    <button class="transcribe-btn" onclick="showVideoTranscription(1)" title="Показать транскрибацию">
+                                        <span class="transcribe-icon">A→</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Video Modal (hidden by default) -->
+                            <div class="video-modal hidden" id="video-modal-1">
+                                <div class="video-modal-content">
+                                    <div class="video-modal-header">
+                                        <span>📹 Запись видеозвонка</span>
+                                        <button class="video-close-btn" onclick="closeVideo(1)">✕</button>
+                                    </div>
+                                    <div class="video-modal-body">
+                                        <div class="video-call-visuals">
+                                            <div class="video-participant">
+                                                <div class="participant-avatar">🎧</div>
+                                                <span class="participant-name">Audiophile Zal</span>
+                                            </div>
+                                            <div class="video-participant">
+                                                <div class="participant-avatar">👤</div>
+                                                <span class="participant-name">Вы</span>
+                                            </div>
+                                        </div>
+                                        <div class="video-progress">
+                                            <div class="video-progress-bar">
+                                                <div class="video-progress-fill" style="width: 35%"></div>
+                                            </div>
+                                            <span class="video-progress-time">1:56 / 5:32</span>
+                                        </div>
+                                    </div>
+                                    <div class="video-modal-controls">
+                                        <button class="video-ctrl-btn" onclick="toggleVideoPlay(1)">⏸</button>
+                                        <button class="video-ctrl-btn">⏪</button>
+                                        <button class="video-ctrl-btn">⏩</button>
+                                        <button class="video-ctrl-btn">🔊</button>
+                                        <button class="video-ctrl-btn">⛶</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Loader (hidden by default) -->
+                            <div class="transcribe-loader hidden" id="video-loader-1">
+                                <div class="loader-content">
+                                    <div class="loader-spinner"></div>
+                                    <span class="loader-text">Транскрибация...</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Transcription Panel (hidden by default) -->
+                            <div class="transcription-panel hidden" id="video-transcription-1">
+                                <div class="transcription-toggle">
+                                    <button class="toggle-btn" onclick="switchVideoTab('full', 1, this)">Текст</button>
+                                    <button class="toggle-btn active" onclick="switchVideoTab('summary', 1, this)">Резюме</button>
+                                </div>
+                                <div class="transcription-content hidden" id="video-full-1">
+                                    <p class="transcript-text">
+                                        <strong>[00:00]</strong> Добрый день! Рады видеть вас на видеозвонке.<br>
+                                        <strong>[00:15]</strong> Сегодня обсудим детали вашего визита в аудиозал.<br>
+                                        <strong>[00:45]</strong> Wilson Audio Sasha V — наша флагманская модель, уверены, вы оцените звучание.<br>
+                                        <strong>[01:30]</strong> Усилитель McIntosh MC462 отлично сочетается с этими колонками, выдаёт чистые 450 Вт.<br>
+                                        <strong>[02:15]</strong> Для прослушивания классики и джаза это идеальный тандем.<br>
+                                        <strong>[03:00]</strong> Можем предложить слоты: завтра в 15:00 или послезавтра в 11:00.<br>
+                                        <strong>[04:20]</strong> Сеанс займёт около полутора часов, будет возможность сравнить разные комбинации.<br>
+                                        <strong>[05:00]</strong> Ждём вас, подтверждение пришлите в чат. До встречи!
+                                    </p>
+                                </div>
+                                <div class="transcription-content" id="video-summary-1">
+                                    <p class="transcript-text summary">
+                                        📋 <strong>Резюме видеозвонка:</strong><br>
+                                        • Обсудили детали визита в аудиозал<br>
+                                        • Sasha V + MC462 — идеальный тандем для классики/джаза<br>
+                                        • Предложено: завтра 15:00 или послезавтра 11:00<br>
+                                        • Длительность сеанса: ~1.5 часа<br>
+                                        • Сравнение комбинаций усилителей<br>
+                                        • Требуется подтверждение в чате
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="time">14:29</span>
+                        </div>
+                    </div>
+                    
                     <!-- Outgoing message -->
                     <div class="message outgoing">
                         <div class="message-content">
